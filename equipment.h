@@ -26,6 +26,23 @@ struct Melee_Weapon{
     void hit();
 };
 
+struct Repair_Kit{
+    int Repair_Amount;
+    float Mass;
+    std::string Name;
+    
+    Repair_Kit(int rA, float m, std::string nM) : Repair_Amount(rA), Mass(m), Name(nM){}
+};
+
+struct Oxygen_Tank{
+    const int Max_Oxygen;
+    int Oxygen_Amount;
+    float Mass;
+    std::string Name;
+
+    Oxygen_Tank(int mO, int oA, float m, std::string nM) : Max_Oxygen(mO), Oxygen_Amount(oA), Mass(m), Name(nM){}
+};
+
 struct Suit{
     enum class Armor_Type{
         Standard,
@@ -39,32 +56,14 @@ struct Suit{
     int Suit_Integrity;
     const int Max_Integrity;
     int Oxygen;
+    const int Max_Oxygen;
     float Mass;
     std::string Name;
     Armor_Type armor_type;
 
-    Suit(Armor_Type aT, int sI, int mI, int o, float m, std::string nM) : armor_type(aT), Suit_Integrity(sI), Max_Integrity(mI), Oxygen(o), Mass(o), Name(nM){}
+    Suit(Armor_Type aT, int sI, int mI, int o, int mO, float m, std::string nM) : armor_type(aT), Suit_Integrity(sI), Max_Integrity(mI), Oxygen(o), Max_Oxygen(mO), Mass(m), Name(nM){}
 
     void Check_Integrity();
-};
-
-struct Repair_Kit{
-    int Repair_Amount;
-    float Mass;
-    std::string Name;
-    
-    Repair_Kit(int rA, float m, std::string nM) : Repair_Amount(rA), Mass(m), Name(nM){}
-
-    void repair();
-};
-
-struct Oxygen_Tank{
-    const int Max_Oxygen;
-    int Oxygen_Amount;
-    float Mass;
-    std::string Name;
-
-    Oxygen_Tank(int mO, int oA, float m, std::string nM) : Max_Oxygen(mO), Oxygen_Amount(oA), Mass(m), Name(nM){}
-
-    void Refill_Oxygen();
+    void repair(Repair_Kit& kit);
+    void Replenish_Oxygen(Oxygen_Tank& tank);
 };
