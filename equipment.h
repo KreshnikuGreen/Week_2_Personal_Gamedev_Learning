@@ -11,7 +11,16 @@ struct Infantry_Ranged_Weapon{
     bool        Is_Loaded;
     std::string Name;
 
-    Infantry_Ranged_Weapon(float m, float mV, int mG, int mA, int a, int mD, bool loaded, std::string nM) : MASS(m), Muzzle_Velocity(mV), Magazines(mG), MAX_AMMO(mA), Ammo(a), MAX_DAMAGE(mD), Is_Loaded(loaded), Name(nM){}
+    Infantry_Ranged_Weapon(float m, float mV, int mG, int mA, int a, int mD, bool loaded, std::string nM):
+        MASS(m), 
+        Muzzle_Velocity(mV), 
+        Magazines(mG), 
+        MAX_AMMO(mA), 
+        Ammo(a), 
+        MAX_DAMAGE(mD), 
+        Is_Loaded(loaded), 
+        Name(nM)
+    {}
     
     void reload();
     void fire();
@@ -21,7 +30,10 @@ struct Melee_Weapon{
     const int   MAX_DAMAGE;
     std::string Name;
 
-    Melee_Weapon(int mD, std::string nM) : MAX_DAMAGE(mD), Name(nM){}
+    Melee_Weapon(int mD, std::string nM):
+        MAX_DAMAGE(mD), 
+        Name(nM)
+    {}
 
     void hit();
 };
@@ -31,7 +43,11 @@ struct Repair_Kit{
     float       MASS;
     std::string Name;
     
-    Repair_Kit(int rA, float m, std::string nM) : Repair_Amount(rA), MASS(m), Name(nM){}
+    Repair_Kit(int rA, float m, std::string nM):
+        Repair_Amount(rA), 
+        MASS(m), 
+        Name(nM)
+    {}
 };
 
 struct Oxygen_Tank{
@@ -40,7 +56,12 @@ struct Oxygen_Tank{
     float       MASS;
     std::string Name;
 
-    Oxygen_Tank(int mO, int oA, float m, std::string nM) : MAX_OXYGEN(mO), Oxygen_Amount(oA), MASS(m), Name(nM){}
+    Oxygen_Tank(int mO, int oA, float m, std::string nM):
+        MAX_OXYGEN(mO), 
+        Oxygen_Amount(oA), 
+        MASS(m), 
+        Name(nM)
+    {}
 };
 
 struct Suit{
@@ -61,7 +82,15 @@ struct Suit{
     std::string Name;
     Armor_Type  armor_type;
 
-    Suit(Armor_Type aT, int sI, int mI, int o, int mO, float m, std::string nM) : armor_type(aT), Suit_Integrity(sI), MAX_INTEGRITY(mI), Oxygen(o), MAX_OXYGEN(mO), MASS(m), Name(nM){}
+    Suit(Armor_Type aT, int sI, int mI, int o, int mO, float m, std::string nM):
+        armor_type(aT),
+        Suit_Integrity(sI), 
+        MAX_INTEGRITY(mI), 
+        Oxygen(o), 
+        MAX_OXYGEN(mO),
+        MASS(m),
+        Name(nM)
+    {}
 
     void Check_Integrity();
     void repair(Repair_Kit& kit);
@@ -71,7 +100,9 @@ struct Suit{
 struct Boots{
     bool        State;
 
-    Boots(bool s) : State(s){}
+    Boots(bool s): 
+        State(s)
+    {}
 
     void toggle();
 };
