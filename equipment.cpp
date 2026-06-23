@@ -8,16 +8,17 @@ void Infantry_Ranged_Weapon::reload(){
     }
 
     if(Ammo == 0){
-        Ammo = Max_Ammo - 1;
+        Ammo = MAX_AMMO - 1;
     } else {
-        Ammo = Max_Ammo; // This is because Max_Ammo includes the round in the chamber, thus the initial -1 above
+        Ammo = MAX_AMMO; // This is because MAX_AMMO includes the round in the chamber, thus the initial -1 above
     }
 }
 
 void Infantry_Ranged_Weapon::fire(){
     int Rounds;
 
-    if(Ammo == 0){
+    if(Ammo <= 0){
+        Ammo = 0;
         std::cout << "Can't fire, no ammo left\n";
     }
 
@@ -50,13 +51,13 @@ void Suit::repair(Repair_Kit& kit){
     Suit_Integrity += difference;
     kit.Repair_Amount -= difference;
     
-    if(Suit_Integrity >= Max_Integrity){
-        Suit_Integrity = Max_Integrity;
+    if(Suit_Integrity >= MAX_INTEGRITY){
+        Suit_Integrity = MAX_INTEGRITY;
     }
 }
 
 void Suit::Replenish_Oxygen(Oxygen_Tank& tank){
-    int difference = tank.Oxygen_Amount - Max_Oxygen;
+    int difference = tank.Oxygen_Amount - MAX_OXYGEN;
     
     if(difference < 0){
         difference *= -1;
@@ -65,7 +66,11 @@ void Suit::Replenish_Oxygen(Oxygen_Tank& tank){
     Oxygen += tank.Oxygen_Amount;
     tank.Oxygen_Amount -= difference;
 
-    if(Oxygen >= Max_Oxygen){
-        Oxygen = Max_Oxygen;
+    if(Oxygen >= MAX_OXYGEN){
+        Oxygen = MAX_OXYGEN;
     }
+}
+
+void Boots::toggle(){
+    State = !State;
 }
