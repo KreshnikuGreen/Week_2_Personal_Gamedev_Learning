@@ -4,9 +4,10 @@
 #include <string>
 
 struct Soldier{
-    const int   MAX_HEALTH;
-    const int   RANK;
-    const int   OCCUPATION; 
+    int         MAX_HEALTH;
+    int         Health;
+    int         RANK;
+    int         OCCUPATION; 
     bool        Alive;
     /*
      * True     = Alive
