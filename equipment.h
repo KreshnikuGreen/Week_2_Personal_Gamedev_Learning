@@ -2,22 +2,22 @@
 #include <string>
 
 struct Infantry_Ranged_Weapon{
-    float       MASS;
+    float       Mass;
     float       Muzzle_Velocity;
     int         Magazines;
-    const int   MAX_AMMO;
+    int         Max_Ammo;
     int         Ammo;
-    const int   MAX_DAMAGE;
+    int         Max_Damage;
     bool        Is_Loaded;
     std::string Name;
 
     Infantry_Ranged_Weapon(float m, float mV, int mG, int mA, int a, int mD, bool loaded, std::string nM):
-        MASS(m), 
+        Mass(m), 
         Muzzle_Velocity(mV), 
         Magazines(mG), 
-        MAX_AMMO(mA), 
+        Max_Ammo(mA), 
         Ammo(a), 
-        MAX_DAMAGE(mD), 
+        Max_Damage(mD), 
         Is_Loaded(loaded), 
         Name(nM)
     {}
@@ -27,11 +27,11 @@ struct Infantry_Ranged_Weapon{
 };
 
 struct Melee_Weapon{
-    const int   MAX_DAMAGE;
+    int         Max_Damage;
     std::string Name;
 
     Melee_Weapon(int mD, std::string nM):
-        MAX_DAMAGE(mD), 
+        Max_Damage(mD), 
         Name(nM)
     {}
 
@@ -40,26 +40,26 @@ struct Melee_Weapon{
 
 struct Repair_Kit{
     int         Repair_Amount;
-    float       MASS;
+    float       Mass;
     std::string Name;
     
     Repair_Kit(int rA, float m, std::string nM):
         Repair_Amount(rA), 
-        MASS(m), 
+        Mass(m), 
         Name(nM)
     {}
 };
 
 struct Oxygen_Tank{
-    const int   MAX_OXYGEN;
+    int         Max_Oxygen;
     int         Oxygen_Amount;
-    float       MASS;
+    float       Mass;
     std::string Name;
 
     Oxygen_Tank(int mO, int oA, float m, std::string nM):
-        MAX_OXYGEN(mO), 
+        Max_Oxygen(mO), 
         Oxygen_Amount(oA), 
-        MASS(m), 
+        Mass(m), 
         Name(nM)
     {}
 };
@@ -75,20 +75,20 @@ struct Suit{
         Level_IV
     };
     int         Suit_Integrity;
-    const int   MAX_INTEGRITY;
+    int         Max_Integrity;
     int         Oxygen;
-    const int   MAX_OXYGEN;
-    const float MASS;
+    int         Max_Oxygen;
+    float       Mass;
     std::string Name;
     Armor_Type  armor_type;
 
     Suit(Armor_Type aT, int sI, int mI, int o, int mO, float m, std::string nM):
         armor_type(aT),
         Suit_Integrity(sI), 
-        MAX_INTEGRITY(mI), 
+        Max_Integrity(mI), 
         Oxygen(o), 
-        MAX_OXYGEN(mO),
-        MASS(m),
+        Max_Oxygen(mO),
+        Mass(m),
         Name(nM)
     {}
 
