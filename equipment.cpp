@@ -12,8 +12,12 @@ void Infantry_Ranged_Weapon::reload(){
     if(Ammo == 0){
         Ammo = Max_Ammo - 1;
     } else {
+
         Ammo = Max_Ammo; // This is because Max_Ammo includes the round in the chamber, thus the initial -1 above
     }
+    
+    Magazines -= 1;
+
 }
 
 void Infantry_Ranged_Weapon::fire(){
@@ -51,10 +55,6 @@ void Suit::repair(Repair_Kit& kit){
     
     Suit_Integrity += Repair_Amount;
     kit.Repair_Amount -= Repair_Amount;
-
-    if(Suit_Integrity > Max_Integrity){
-        Suit_Integrity = Max_Integrity;
-    }
 }
 
 void Suit::Replenish_Oxygen(Oxygen_Tank& tank){
@@ -64,10 +64,6 @@ void Suit::Replenish_Oxygen(Oxygen_Tank& tank){
 
     Oxygen += Refill_Amount;
     tank.Oxygen_Amount -= Refill_Amount;
-
-    if(Oxygen > Max_Oxygen){
-        Oxygen = Max_Oxygen;
-    }
 }
 
 void Boots::toggle(){
