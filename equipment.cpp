@@ -1,4 +1,5 @@
 #include "equipment.h"
+#include <algorithm>
 #include <iostream>
 
 void Infantry_Ranged_Weapon::reload(){
@@ -21,6 +22,7 @@ void Infantry_Ranged_Weapon::fire(){
     if(Ammo <= 0){
         Ammo = 0;
         std::cout << "Can't fire, no ammo left\n";
+        return;
     }
 
     std::cout << "How many rounds do you want to fire? ";
@@ -43,31 +45,27 @@ void Suit::Check_Integrity(){
 }
 
 void Suit::repair(Repair_Kit& kit){
-    int difference = kit.Repair_Amount - Suit_Integrity;
+    int Missing = Max_Integrity - Suit_Integrity;
+
+    int Repair_Amount = std::min(Missing, kit.Repair_Amount);
     
-    if(difference < 0){
-        difference *= -1;
-    }
-    
-    Suit_Integrity += difference;
-    kit.Repair_Amount -= difference;
-    
-    if(Suit_Integrity >= Max_Integrity){
+    Suit_Integrity += Repair_Amount;
+    kit.Repair_Amount -= Repair_Amount;
+
+    if(Suit_Integrity > Max_Integrity){
         Suit_Integrity = Max_Integrity;
     }
 }
 
 void Suit::Replenish_Oxygen(Oxygen_Tank& tank){
-    int difference = tank.Oxygen_Amount - Max_Oxygen;
-    
-    if(difference < 0){
-        difference *= -1;
-    }
+    int Missing = Max_Oxygen - Oxygen;
 
-    Oxygen += tank.Oxygen_Amount;
-    tank.Oxygen_Amount -= difference;
+    int Refill_Amount = std::min(Missing, tank.Oxygen_Amount);
 
-    if(Oxygen >= Max_Oxygen){
+    Oxygen += Refill_Amount;
+    tank.Oxygen_Amount -= Refill_Amount;
+
+    if(Oxygen > Max_Oxygen){
         Oxygen = Max_Oxygen;
     }
 }
