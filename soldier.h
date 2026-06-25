@@ -5,6 +5,7 @@
 
 Infantry_Ranged_Weapon create_random_rifle();
 Infantry_Ranged_Weapon create_random_pistol();
+int occupation_for_rank(int rank);
 
 struct Soldier{
     int                     MAX_HEALTH;
