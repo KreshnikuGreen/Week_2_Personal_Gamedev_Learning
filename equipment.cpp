@@ -89,3 +89,40 @@ Infantry_Ranged_Weapon create_random_pistol(){
         default: return Infantry_Ranged_Weapon(1.0f, 350, 3, 11, 10, 10, true, "Default_Pistol");
     }
 }
+
+int Suit::get_armor_value(Armor_Type type){
+    switch(type){
+        case Armor_Type::Standard:      return 0;
+        case Armor_Type::Level_I:       return 5;
+        case Armor_Type::Level_II:      return 10;
+        case Armor_Type::Level_IIIA:    return 15;
+        case Armor_Type::Level_III:     return 20;
+        case Armor_Type::Level_IIIPlus: return 25;
+        case Armor_Type::Level_IV:      return 30;
+        default:                        return 0;
+    }
+}
+
+Suit create_combat_suit(){
+    int type_roll = random_int(1, 10);
+    Suit::Armor_Type type;
+    if(type_roll <= 4){
+        type = Suit::Armor_Type::Level_IIIA;
+    } else if(type_roll <= 7) {
+        type = Suit::Armor_Type::Level_III;
+    } else if(type_roll <= 9) {
+        type = Suit::Armor_Type::Level_IIIPlus;
+    } else {
+        type = Suit::Armor_Type::Level_IV;
+    }
+
+    int max_int = 100;
+    int integrity = max_int;
+    int max_oxy = 60;
+    int oxygen = max_oxy;
+    float mass = (type == Suit::Armor_Type::Standard) ? 5.0f : 8.0f;
+
+    std::string name = "Combat_Suit";
+
+    return Suit(type, integrity, max_int, oxygen, max_oxy, mass, name);
+}

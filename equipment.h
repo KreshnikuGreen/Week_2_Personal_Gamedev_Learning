@@ -74,6 +74,7 @@ struct Suit{
         Level_IIIPlus,
         Level_IV
     };
+    int         Ballistic_Protection;
     int         Suit_Integrity;
     int         Max_Integrity;
     int         Oxygen;
@@ -89,13 +90,17 @@ struct Suit{
         Oxygen(o), 
         Max_Oxygen(mO),
         Mass(m),
-        Name(nM)
+        Name(nM),
+        Ballistic_Protection(get_armor_value(aT))
     {}
 
     void Check_Integrity();
     void repair(Repair_Kit& kit);
     void Replenish_Oxygen(Oxygen_Tank& tank);
+    static int get_armor_value(Armor_Type type);
 };
+
+Suit create_combat_suit();
 
 struct Boots{
     bool        State;
