@@ -10,7 +10,7 @@ int occupation_for_rank(int rank){
     }
 }
 
-Soldier create_team_leader(const std::string& name, unsigned int id){
+Soldier create_team_leader(const std::string& name){
     int rank        = 3;
     int occupation  = 6;
 

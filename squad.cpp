@@ -12,13 +12,7 @@ std::string Squad::assign_name(){
 
 void Squad::get_size() const{
     size_t Size =  Members.size();
-    int Squad_Size = 0;
-
-    for(int i = 0; i < Size; i++){
-        Squad_Size += 1;
-    }
-
-    std::cout << "Squad size is " << Squad_Size << "\n";
+    std::cout << "Squad has " << Size << " members\n";
 }
 
 bool Squad::is_wiped() const{
@@ -52,9 +46,11 @@ Squad create_squad(const std::string &name, size_t Size){
     Squad Created_Squad(name, Size);
     Created_Squad.Members.reserve(Size);
 
-    Created_Squad.Members.push_back(create_team_leader(Created_Squad.assign_name(), 1));
+    Created_Squad.Members.push_back(create_team_leader(Created_Squad.assign_name()));
 
     for(int i = 1; i < Size; i++){
         Created_Squad.Members.push_back(create_team_member(Created_Squad.assign_name(), 1 + i));
     }
+
+    return Created_Squad;
 }

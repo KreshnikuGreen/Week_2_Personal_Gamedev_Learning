@@ -40,5 +40,5 @@ struct Soldier{
     {}
 };
 
-Soldier create_team_leader(const std::string& name, unsigned int id);
+Soldier create_team_leader(const std::string& name);
 Soldier create_team_member(const std::string& name, unsigned int id);
