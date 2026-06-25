@@ -1,7 +1,5 @@
 #include "soldier.h"
 
-Soldier soldier1(100, 100, );
-
 int occupation_for_rank(int rank){
     if(rank == 1){
         return 1;
