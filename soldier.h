@@ -24,8 +24,9 @@ struct Soldier{
     Infantry_Ranged_Weapon  Secondary_Weapon;
     Melee_Weapon            Knife;
     Suit                    Combat_Suit;
+    Boots                   Combat_Boots;
 
-    Soldier(int mH, int h, int r, int o, bool a, unsigned int id, std::string nM, Infantry_Ranged_Weapon pW, Infantry_Ranged_Weapon sW, Melee_Weapon k, Suit s): 
+    Soldier(int mH, int h, int r, int o, bool a, unsigned int id, std::string nM, Infantry_Ranged_Weapon pW, Infantry_Ranged_Weapon sW, Melee_Weapon k, Suit s, Boots cB): 
         MAX_HEALTH(mH), 
         Health(h), 
         RANK(r), 
@@ -36,7 +37,8 @@ struct Soldier{
         Primary_Weapon(pW), 
         Secondary_Weapon(sW), 
         Knife(k),
-        Combat_Suit(s)
+        Combat_Suit(s),
+        Combat_Boots(cB)
     {}
 };
 

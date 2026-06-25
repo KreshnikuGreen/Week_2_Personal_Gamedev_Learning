@@ -22,7 +22,8 @@ Soldier create_team_leader(const std::string& name){
                 create_random_rifle(),
                 create_random_pistol(),
                 Melee_Weapon(15, "Combat_Knife"),
-                create_combat_suit()
+                create_combat_suit(),
+                Boots(true)
             );
 }
 
@@ -38,6 +39,7 @@ Soldier create_team_member(const std::string& name, unsigned int id){
             create_random_rifle(),
             create_random_pistol(),
             Melee_Weapon(15, "Combat_Knife"),
-            create_combat_suit()
+            create_combat_suit(),
+            Boots(true)
            );
 }
