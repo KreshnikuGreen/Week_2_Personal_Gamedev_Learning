@@ -13,6 +13,7 @@ struct Soldier{
     int                     RANK;
     int                     OCCUPATION; 
     bool                    Alive;
+    unsigned int            ID_Number;
     /*
      * True     = Alive
      * False    = Dead
@@ -24,12 +25,13 @@ struct Soldier{
     Melee_Weapon            Knife;
     Suit                    Combat_Suit;
 
-    Soldier(int mH, int h, int r, int o, bool a, std::string nM, Infantry_Ranged_Weapon pW, Infantry_Ranged_Weapon sW, Melee_Weapon k, Suit s): 
+    Soldier(int mH, int h, int r, int o, bool a, unsigned int id, std::string nM, Infantry_Ranged_Weapon pW, Infantry_Ranged_Weapon sW, Melee_Weapon k, Suit s): 
         MAX_HEALTH(mH), 
         Health(h), 
         RANK(r), 
         OCCUPATION(o), 
-        Alive(a), 
+        Alive(a),
+        ID_Number(id),
         Name(nM), 
         Primary_Weapon(pW), 
         Secondary_Weapon(sW), 
@@ -38,5 +40,5 @@ struct Soldier{
     {}
 };
 
-Soldier create_team_member();
-Soldier create_team_leader();
+Soldier create_team_leader(const std::string& name, unsigned int id);
+Soldier create_team_member(const std::string& name, unsigned int id);
