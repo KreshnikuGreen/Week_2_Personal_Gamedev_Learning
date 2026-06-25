@@ -1,9 +1,10 @@
 #include "equipment.h"
+#include "soldier.h"
 #include <algorithm>
 #include <iostream>
 
 void Infantry_Ranged_Weapon::reload(){
-    if(Magazines <= 0){
+    if(Magazines < 0){
         Magazines = 0; // Doing both cases at once to reduce how much I have to write
         std::cout << "Can't reload, no magazines left\n";
         return;
@@ -68,4 +69,23 @@ void Suit::Replenish_Oxygen(Oxygen_Tank& tank){
 
 void Boots::toggle(){
     State = !State;
+}
+
+Infantry_Ranged_Weapon create_random_rifle(){
+    int type = random_int(1, 3);
+    switch(type){
+        case 1: return Infantry_Ranged_Weapon(3.5f, 900, 5, 31, 30, 25, true, "M4A1");
+        case 2: return Infantry_Ranged_Weapon(4.0f, 850, 4, 26, 25, 30, true, "AK-47");
+        case 3: return Infantry_Ranged_Weapon(2.5f, 1000, 6, 21, 20, 35, true, "Sniper");
+        default: return Infantry_Ranged_Weapon(3.0f, 800, 3, 21, 20, 20, true, "Default_Rifle");
+    }
+}
+
+Infantry_Ranged_Weapon create_random_pistol(){
+    int type = random_int(1, 2);
+    switch(type){
+        case 1: return Infantry_Ranged_Weapon(1.0f, 400, 3, 16, 15, 10, true, "Glock");
+        case 2: return Infantry_Ranged_Weapon(1.2f, 380, 4, 13, 12, 12, true, "M1911");
+        default: return Infantry_Ranged_Weapon(1.0f, 350, 3, 11, 10, 10, true, "Default_Pistol");
+    }
 }
