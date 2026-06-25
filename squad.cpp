@@ -4,7 +4,7 @@
 #include <iostream>
 
 std::string Squad::assign_name(){
-    std::array<std::string, 7> Names = {"John", "Bob", "Bill", "Dean", "Daniel", "Sam"};
+    std::array<std::string, 7> Names = {"John", "Bob", "Bill", "Dean", "Daniel", "Sam", "Carl"};
     int Random = random_int(0, 6);
 
     return Names[Random];
@@ -17,7 +17,7 @@ void Squad::get_size() const{
 
 bool Squad::is_wiped() const{
     size_t Size = Members.size();
-    int Dead_Count = 0;
+    size_t Dead_Count = 0;
     
     for(int i = 0; i < Size; i++){
         if(Members[i].Alive == false){
