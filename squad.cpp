@@ -55,3 +55,9 @@ Squad create_squad(const std::string &name, size_t Size){
 
     return Created_Squad;
 }
+
+void Squad::remove_member(int index){
+    if(index >= 0 && index < (int)Members.size()){
+        Members.erase(Members.begin() + index);
+    }
+}

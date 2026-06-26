@@ -13,6 +13,11 @@ inline int random_int(int min, int max){
 
 inline void random_damage(unsigned int Type_Of_Damage, Soldier& target){
 
+    if(target.Alive != true){
+        std::cout << "Target is dead already!\n";
+        return;
+    }
+
     int Armor_Damage = 0;
     int Health_Damage = 0;
     int Ammo_Type_Index = 0;
@@ -37,14 +42,17 @@ inline void random_damage(unsigned int Type_Of_Damage, Soldier& target){
                 case 1: {
                             Armor_Damage = 5;
                             Health_Damage = 25;
+                            break;
                         }
                 case 2: {
                             Armor_Damage = 10;
                             Health_Damage = 15;
+                            break;
                         }
                 case 3: {
                             Armor_Damage = 20;
                             Health_Damage = 10;
+                            break;
                         }
             }
             target.Combat_Suit.Suit_Integrity -= Armor_Damage;
@@ -61,6 +69,11 @@ inline void random_damage(unsigned int Type_Of_Damage, Soldier& target){
 }
 
 inline void heal(Soldier& target){
+    if(target.Alive -= true){
+        std::cout << "Target is dead";
+        return;
+    }
+
     target.Health += 25;
     if(target.Health > target.MAX_HEALTH){
         target.Health = target.MAX_HEALTH;
