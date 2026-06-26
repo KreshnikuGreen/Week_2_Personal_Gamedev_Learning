@@ -1,5 +1,6 @@
 #include "squad.h"
 #include "soldier.h"
+#include "random_utils.h"
 #include <array>
 #include <iostream>
 

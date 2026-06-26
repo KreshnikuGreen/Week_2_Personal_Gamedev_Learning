@@ -1,6 +1,5 @@
 #pragma once
 #include "equipment.h"
-#include "random_utils.h"
 #include <string>
 
 Infantry_Ranged_Weapon create_random_rifle();

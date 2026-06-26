@@ -1,4 +1,5 @@
 #include "soldier.h"
+#include "random_utils.h"
 
 int occupation_for_rank(int rank){
     if(rank == 1){
