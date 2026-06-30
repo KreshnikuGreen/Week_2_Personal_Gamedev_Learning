@@ -10,15 +10,7 @@ int main(){
     Squad Game_Squad    = create_squad("Guh", 7);
     std::string Boots_State;
 
-    while(Play_State == true){
-        for (size_t i = 0; i < Game_Squad.Members.size(); i++){
-            const Soldier& soldier = Game_Squad.Members[i];
-            if(soldier.Combat_Boots.State == true){
-                Boots_State = "ON";
-            } else {
-                Boots_State = "OFF";
-            }
-        }
+    while(Play_State == true){ 
         std::cout << "===== Squad Menu =====\n1. Status\n2. Toggle Boots\n3. Take Damage\n4. Heal\n5. Exit";
         
         std::cin >> choice;
@@ -41,11 +33,13 @@ int main(){
                        break;
                    }
             case 3: {
-                        int Random_Soldier = random_int(1, Game_Squad.Members.size());
-                        random_damage(50, Game_Squad.Members[Random_Soldier]);
+                        int Random_Soldier = random_int(0, Game_Squad.Members.size() - 1);
+                        int Damage_Type = random_int(1, 2);
+                        random_damage(Damage_Type, Game_Squad.Members[Random_Soldier]);
                     }
+                    break;
             case 4: {
-                        int Random_Soldier = random_int(1, Game_Squad.Members.size());
+                        int Random_Soldier = random_int(0, Game_Squad.Members.size() - 1);
                         heal(Game_Squad.Members[Random_Soldier]);
                     }
                     break;
