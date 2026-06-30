@@ -15,8 +15,9 @@ struct Squad{
     void                    remove_member(int index);
     void                    get_size()  const;
     bool                    is_wiped()  const;
-    void                    check_member_health();
+    void                    check_member_health() const;
     std::string             assign_name();
+    void                    show_status() const;
 };
 
 Squad create_squad(const std::string& Name, size_t Size);

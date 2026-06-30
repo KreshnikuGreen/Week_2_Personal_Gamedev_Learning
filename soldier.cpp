@@ -13,7 +13,20 @@ int occupation_for_rank(int rank){
 
 Soldier create_team_leader(const std::string& name){
     int rank        = 3;
+    /*
+     * 1 - Private/Grunt
+     * 2 - Specialist
+     * 3 - Team Leader
+     */
     int occupation  = 6;
+    /*
+     * 1 - Rifleman
+     * 2 - Grenadier
+     * 3 - Medic
+     * 4 - Autorifleman
+     * 5 - Sniper
+     * 6 - Team Leader
+     */
 
     return Soldier(
                 100, 100,

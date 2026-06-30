@@ -1,4 +1,5 @@
 #include "squad.h"
+#include "equipment.h"
 #include "soldier.h"
 #include "random_utils.h"
 #include <array>
@@ -33,12 +34,16 @@ bool Squad::is_wiped() const{
     }
 }
 
-void Squad::check_member_health(){
+void Squad::check_member_health() const{
     size_t Size = Members.size();
+
+    std::cout << "===== Health =====\n";
 
     for(int i = 0; i < Size; i++){
         if(Members[i].Health < 50){
-            std::cout << Members[i].Name << " is heavily wounded\n";
+            std::cout << Members[i].Name << " is heavily wounded, only " << Members[i].Health << " health left";
+        } else {
+            std::cout << Members[i].Name << " has " << Members[i].Health << " health left\n";
         }
     }
 }
@@ -59,5 +64,21 @@ Squad create_squad(const std::string &name, size_t Size){
 void Squad::remove_member(int index){
     if(index >= 0 && index < (int)Members.size()){
         Members.erase(Members.begin() + index);
+    }
+}
+
+void Squad::show_status() const{
+    get_size();
+    check_member_health();
+    
+    size_t Size = Members.size();
+
+    std::cout << "===== Weapons =====\n";
+    for(size_t i = 0; i < Size; i++){
+        std::cout << Members[i].Name << " has " << Members[i].Primary_Weapon.Name << " " << Members[i].Secondary_Weapon.Name;
+    }
+    std::cout << "\n===== Ranks =====\n";
+    for(size_t i = 0; i < Size; i++){
+        std::cout << Members[i].Name << " is " << Members[i].RANK;
     }
 }
