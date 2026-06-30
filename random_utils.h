@@ -69,7 +69,7 @@ inline void random_damage(unsigned int Type_Of_Damage, Soldier& target){
 }
 
 inline void heal(Soldier& target){
-    if(target.Alive == true){
+    if(target.Alive == false){
         std::cout << "Target is dead";
         return;
     }
